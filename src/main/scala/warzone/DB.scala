@@ -1,13 +1,14 @@
-package discord
+package warzone
 
 import cats.effect._
 import cats.implicits._
-import discord.DB._
 import discord.model._
+import fs2.Stream
 import natchez.Trace.Implicits.noop
 import skunk._
 import skunk.codec.all._
 import skunk.implicits._
+import warzone.DB._
 
 class DB(pool: ConnectionPool) {
 
@@ -32,6 +33,13 @@ class DB(pool: ConnectionPool) {
   }
 
   def unregisterUser(discordId: DiscordId): IO[Unit] = pool.use(_.prepare(unregisterUserCommand).use(_.execute(discordId))).void
+
+  def accountStream(chunkSize: Int): Stream[IO, AccountName] = 
+    for {
+      s <- Stream.resource(pool)
+      q <- Stream.resource(s.prepare(getUserAccountsQuery))
+      a <- q.stream(Void, chunkSize)
+    } yield a
 }
 
 object DB {
@@ -85,4 +93,10 @@ object DB {
         DELETE FROM users
         WHERE discord_id = $discordId
       """.command
+
+  val getUserAccountsQuery =
+    sql"""
+      SELECT account_name
+      FROM users
+    """.query(accountName)
 }

@@ -1,4 +1,4 @@
-package discord
+package warzone
 
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers

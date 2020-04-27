@@ -11,8 +11,8 @@ object Dependencies {
     val slf4j           = "1.7.30"
     val http4s          = "0.21.3"
     val newtype         = "0.4.3"
-    val decline         = "1.0.0"
-    val refined         = "0.9.13"
+    val discord         = "0.1.0-SNAPSHOT"
+    val refined         = "0.9.14"
     val circeFs2        = "0.13.0"
     val scalaTest       = "3.1.1"
     val catsEffect      = "2.1.2"
@@ -28,6 +28,7 @@ object Dependencies {
     val slf4j           = "org.slf4j" % "slf4j-nop" % Versions.slf4j
     val http4s          = "org.http4s" %% "http4s-circe" % Versions.http4s
     val newtype         = "io.estatico" %% "newtype" % Versions.newtype
+    val discord         = "com.snac" %% "discord" % Versions.discord
     val refined         = "eu.timepit" %% "refined" % Versions.refined
     val circeFs2        = "io.circe" %% "circe-fs2" % Versions.circeFs2
     val catsEffect      = "org.typelevel" %% "cats-effect" % Versions.catsEffect
@@ -49,6 +50,7 @@ object Dependencies {
     slf4j,
     http4s,
     newtype,
+    discord,
     refined,
     circeFs2,
     scalaTest,

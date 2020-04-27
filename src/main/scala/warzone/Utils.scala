@@ -1,4 +1,4 @@
-package discord
+package warzone
 
 import cats.effect._
 import cats.implicits._
