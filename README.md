@@ -1,4 +1,3 @@
-# Discord Framework in Scala
+# Call of Duty: Warzone Bot
 
-A project to mess around with the Discord API and make a framework for it.
-Mostly just for practice and to learn.
+A Discord bot that notifies the channel when any of its members get a dub
